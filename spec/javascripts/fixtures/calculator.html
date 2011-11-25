@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style>
+        table {
+            margin: 0 auto;
+            border: 2px solid gray;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+        }
+        td {
+            width: 50px;
+            height: 40px;
+            padding: 2px;
+        }
+        #operator {
+            text-align: center;
+            font-size: 26px;
+        }
+        #result {
+            text-align: right;
+        }
+        #operator, #result {
+            width: 100%;
+            height: 30px;
+            border: 1px solid black;
+            line-height: 30px;
+            box-shadow: 1px 1px 1px gray inset;
+        }
+        button {
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            background-color: gray;
+            box-shadow: 2px 2px 2px black;
+        }
+    </style>
+</head>
+<body>
+    <table id="calculator">
+        <tr>
+            <td>
+                <div id="operator"></div>
+            </td>
+            <td colspan="3">
+                <div id="result"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="c" value="C">C</button>
+            </td>
+            <td>
+                <button id="division" value="/">/</button>
+            </td>
+            <td>
+                <button id="multiplication" value="*">*</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="7" value="7">7</button>
+            </td>
+            <td>
+                <button id="8" value="8">8</button>
+            </td>
+            <td>
+                <button id="9" value="9">9</button>
+            </td>
+            <td>
+                <button id="subtraction" value="-">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="4" value="4">4</button>
+            </td>
+            <td>
+                <button id="5" value="5">5</button>
+            </td>
+            <td>
+                <button id="6" value="6">6</button>
+            </td>
+            <td>
+                <button id="addition" value="+">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="1" value="1">1</button>
+            </td>
+            <td>
+                <button id="2" value="2">2</button>
+            </td>
+            <td>
+                <button id="3" value="3">3</button>
+            </td>
+            <td rowspan="2">
+                <button id="equal" value="=">=</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="0" value="0">0</button>
+            </td>
+            <td>
+                <button id="point" value=".">.</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
