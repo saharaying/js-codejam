@@ -65,4 +65,14 @@ describe("Calculator", function() {
       expect($("#result").html()).toBe("2.5");
     });    
   });
+
+  // TODO
+  // it("should start new expression after evaluation", function() {
+  //   clickOn('1');
+  //   clickOn('+');
+  //   clickOn('4');
+  //   clickOn('=');
+  //   clickOn('3');
+  //   expect($('#result').html()).toBe('3');
+  // });
 });

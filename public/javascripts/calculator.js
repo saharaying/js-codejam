@@ -2,8 +2,7 @@ var Calculator = function($container) {
   var $calculator = $container;
   var operators = ['+', '-', '*', '/'];
   var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  var expression = [];
-  var leftOperant = '';
+  var expression = Expression();
   
   function bindClickOn(buttons, onClick) {
     $.each(buttons, function(i, button) {
@@ -15,42 +14,29 @@ var Calculator = function($container) {
   
   function bindOperant() {
     bindClickOn(numbers, function(value) {
-      leftOperant += value;
-      displayResult(leftOperant);
+      operant = 10 * expression.currentOperant() + parseInt(value);
+      displayResult(operant);
+      expression.setOperant(operant);
     });
   }
   
   function bindOperator() {
     bindClickOn(operators, function(value) {
-      expression.push(parseInt(leftOperant));
       displayOperator(value);
-      leftOperant = '';
-      expression.push(value);
+      expression.setOperator(value);
     });
 
     bindClickOn('C', function() {
-      expression = [];
+      expression.clear();
       displayOperator(null);
       displayResult(null);
     });
     
     bindClickOn('=', function() {
-      expression.push(parseInt(leftOperant));
-      switch(expression[1]) {
-        case '+': 
-          result = expression[0] + expression[2];
-          break;
-        case '-': 
-          result = expression[0] - expression[2];
-          break;
-        case '*': 
-          result = expression[0] * expression[2];
-          break;
-        case '/': 
-          result = expression[0] / expression[2];
-      }
-      displayResult(result);
-      expression = [result];      
+      result = expression.evaluate();
+      expression.clear();
+      expression.setOperant(result);
+      displayResult(result);     
     });
   }
   
