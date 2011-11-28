@@ -28,44 +28,46 @@ var Calculator = function($container) {
     $calculator.find('#result').html(value);
   }
   
-  function bindOperant() {
+  function initOperantArea() {
     bindClickOn(numbers, function(value) {
       displayResult(cachedOperant += value);
     });
   }
   
-  function saveOperant() {
+  function updateOperant() {
     clearCachedOperant();
     expression.setOperant(parseFloat(getDisplayedResult()));    
   }
+  
+  function updateOperator(value) {
+    displayOperator(value);
+    expression.setOperator(value);
+  }
  
-  function bindOperator() {
+  function initOperatorArea() {
     bindClickOn(operators, function(value) {
-      saveOperant();
-      displayOperator(value);
-      expression.setOperator(value);
+      updateOperant();
+      updateOperator(value);
+    });
+  }
+  
+  function bindEvaluate() {
+    bindClickOn('=', function() {
+      updateOperant();
+      displayResult(expression.evaluate());     
     });
   }
   
   function bindClear() {
     bindClickOn('C', function() {
-      clearCachedOperant();
-      expression.clear();
+      displayResult('');
       displayOperator(null);
-      displayResult(null);
+      expression.clear();
     });    
   }
   
-  function bindEvaluate() {
-    bindClickOn('=', function() {
-      saveOperant();
-      displayResult(expression.evaluate());     
-      expression.clear();
-    });
-  }
-  
-  bindOperant();
-  bindOperator();
+  initOperantArea();
+  initOperatorArea();
   bindEvaluate();
   bindClear();
 }
