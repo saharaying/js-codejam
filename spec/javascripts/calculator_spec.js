@@ -5,6 +5,10 @@ describe("Calculator", function() {
     $("button[value='" + button + "']").click();
   }
   
+  function assertResultToBe(expectResult) {
+    expect($("#result").html()).toBe(expectResult);
+  }
+  
   beforeEach(function() {
     loadFixtures("calculator.html");
     calculator = Calculator($("#calculator"));
@@ -12,13 +16,13 @@ describe("Calculator", function() {
   
   it("should be able to input the operand", function() {
     clickOn('1');
-    expect($("#result").html()).toBe("1");
+    assertResultToBe('1');
   });
   
   it("should be able to input the operand with multiple digits", function() {
     clickOn('1'); 
     clickOn('4');
-    expect($("#result").html()).toBe("14");
+    assertResultToBe('14');
   });
   
   it("should set operator", function() {
@@ -28,7 +32,7 @@ describe("Calculator", function() {
   
   it("should clear the result when click on C", function() {
     clickOn('C');
-    expect($("#result").html()).toBe('');    
+    assertResultToBe('');
     expect($("#operator").html()).toBe('');    
   });
   
@@ -38,7 +42,7 @@ describe("Calculator", function() {
       clickOn('-');
       clickOn('2');
       clickOn('=');
-      expect($("#result").html()).toBe("3");
+      assertResultToBe('3');
     });
 
     it("should do addition", function() {
@@ -46,7 +50,7 @@ describe("Calculator", function() {
       clickOn('+');
       clickOn('2');
       clickOn('=');
-      expect($("#result").html()).toBe("7");
+      assertResultToBe('7');
     });
 
     it("should do multiple", function() {
@@ -54,7 +58,7 @@ describe("Calculator", function() {
       clickOn('*');
       clickOn('2');
       clickOn('=');
-      expect($("#result").html()).toBe("10");
+      assertResultToBe('10');
     });
 
     it("should do division", function() {
@@ -62,17 +66,16 @@ describe("Calculator", function() {
       clickOn('/');
       clickOn('2');
       clickOn('=');
-      expect($("#result").html()).toBe("2.5");
+      assertResultToBe('2.5');
     });    
   });
 
-  // TODO
-  // it("should start new expression after evaluation", function() {
-  //   clickOn('1');
-  //   clickOn('+');
-  //   clickOn('4');
-  //   clickOn('=');
-  //   clickOn('3');
-  //   expect($('#result').html()).toBe('3');
-  // });
+  it("should start new expression after evaluation", function() {
+    clickOn('1');
+    clickOn('+');
+    clickOn('4');
+    clickOn('=');
+    clickOn('3');
+    assertResultToBe('3');
+  });
 });

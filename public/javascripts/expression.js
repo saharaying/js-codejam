@@ -33,10 +33,6 @@ var Expression = function() {
     }
   }
   
-  function getCurrentOperant() {
-    return operator == null ? leftOperant : rightOperant;
-  }
-  
   function clear() {
     leftOperant = 0;
     rightOperant = 0;
@@ -47,7 +43,6 @@ var Expression = function() {
     setOperant : setOperant,
     setOperator : setOperator,
     evaluate : evaluate,
-    clear : clear,
-    currentOperant : getCurrentOperant
+    clear : clear
   }
 }
